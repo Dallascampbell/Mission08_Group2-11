@@ -11,11 +11,12 @@ namespace Mission08_Group2_11.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private SubmitTaskContext _context { get; set; }
+
+        public HomeController(SubmitTaskContext x)
         {
-            _logger = logger;
+            _context = x;
         }
 
         public IActionResult Index()
@@ -24,67 +25,62 @@ namespace Mission08_Group2_11.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddTask()
+        public IActionResult AddEdit()
         {
-            return View("AddEdit");
-        }
+            ViewBag.Categories = _context.Categories.ToList();
 
-        /*[HttpPost]
-        public IActionResult AddTask()
-        {
-            return View("AddEdit");
-        }*/
-
-        /*[HttpGet]
-        public IActionResult Edit(int TaskId)
-        {
-            ViewBag.Categories = movieContext.Categories.ToList();
-            var movieForm = movieContext.Movies.Single(x => x.MovieId == MovieId);
-            return View("AddMovie", movieForm);
+            return View();
         }
 
         [HttpPost]
-        public IActionResult Edit(Movie mov)
+        public IActionResult AddEdit(SubmitTask s)
         {
-            movieContext.Update(mov);
-            movieContext.SaveChanges();
-            return RedirectToAction("MovieList");
+            _context.Add(s);
+            _context.SaveChanges();
+
+            return View("AddEdit", s);
         }
 
         [HttpGet]
-        public IActionResult Delete(int MovieId)
+        public IActionResult Edit(int taskId)
         {
-            var movie = movieContext.Movies.Single(x => x.MovieId == MovieId);
+            ViewBag.Categories = _context.Categories.ToList();
+
+            var submitTask = _context.Responses.Single(x => x.TaskID == taskId);
+
+            return View("AddEdit", submitTask);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(SubmitTask s)
+        {
+            _context.Update(s);
+            _context.SaveChanges();
+            return RedirectToAction("AddEdit");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int taskId)
+        {
+            var movie = _context.Responses.Single(x => x.TaskID == taskId);
             return View(movie);
         }
 
         [HttpPost]
-        public IActionResult Delete(Movie mov)
+        public IActionResult Delete(SubmitTask s)
         {
-            movieContext.Movies.Remove(mov);
-            movieContext.SaveChanges();
-            return RedirectToAction("MovieList");
-        }*/
-
-        public IActionResult Quadrant()
-        {
-            /*var q1 = movieContext.Responses.Include(x => x.Category).ToList();
-            var q2 = movieContext.Responses.Include(x => x.Category).ToList();
-            var q3 = movieContext.Responses.Include(x => x.Category).ToList();
-            var q4 = movieContext.Responses.Include(x => x.Category).ToList();*/
-            return View();
+            _context.Responses.Remove(s);
+            _context.SaveChanges();
+            return RedirectToAction("AddEdit");
         }
 
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //public IActionResult Quadrant()
+        //{
+        //    var q1 = _context.Responses.Include(x => x.Category).ToList();
+        //    var q2 = _context.Responses.Include(x => x.Category).ToList();
+        //    var q3 = _context.Responses.Include(x => x.Category).ToList();
+        //    var q4 = _context.Responses.Include(x => x.Category).ToList();
+        //    return View();
+        //}
     }
 }
