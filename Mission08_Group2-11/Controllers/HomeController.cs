@@ -57,14 +57,14 @@ namespace Mission08_Group2_11.Controllers
         {
             _context.Update(s);
             _context.SaveChanges();
-            return RedirectToAction("AddEdit");
+            return RedirectToAction("Quadrant");
         }
 
         [HttpGet]
         public IActionResult Delete(int taskId)
         {
-            var movie = _context.Responses.Single(x => x.TaskID == taskId);
-            return View(movie);
+            var submitTask = _context.Responses.Single(x => x.TaskID == taskId);
+            return View(submitTask);
         }
 
         [HttpPost]
@@ -72,7 +72,7 @@ namespace Mission08_Group2_11.Controllers
         {
             _context.Responses.Remove(s);
             _context.SaveChanges();
-            return RedirectToAction("AddEdit");
+            return RedirectToAction("Quadrant");
         }
 
         public IActionResult Quadrant()
