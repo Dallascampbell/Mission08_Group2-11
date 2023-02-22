@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission08_Group2_11.Models;
 using System;
@@ -74,6 +75,17 @@ namespace Mission08_Group2_11.Controllers
             return RedirectToAction("AddEdit");
         }
 
+        public IActionResult Quadrant()
+        {
+            var taskList = _context.Responses
+                .Include(x => x.Category)
+                .ToList();
+
+            return View(taskList);
+        }
+        
+        
+        
         //public IActionResult Quadrant()
         //{
         //    var q1 = _context.Responses.Include(x => x.Category).ToList();
