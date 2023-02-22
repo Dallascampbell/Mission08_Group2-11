@@ -23,6 +23,17 @@ namespace Mission08_Group2_11.Controllers
             return View();
         }
 
+        public IActionResult AddEdit()
+        {
+            return View();
+        }
+
+        public IActionResult Quadrant()
+        {
+            return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
