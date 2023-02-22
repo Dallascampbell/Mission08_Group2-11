@@ -77,11 +77,39 @@ namespace Mission08_Group2_11.Controllers
 
         public IActionResult Quadrant()
         {
-            var taskList = _context.Responses
+            var Q1 = _context.Responses
+                .Where(x => x.Quadrant == 1)
+                .Where(x => x.Completed == false)
                 .Include(x => x.Category)
                 .ToList();
 
-            return View(taskList);
+            var Q2 = _context.Responses
+                .Where(x => x.Quadrant == 2)
+                .Where(x => x.Completed == false)
+                .Include(x => x.Category)
+                .ToList();
+
+            var Q3 = _context.Responses
+                .Where(x => x.Quadrant == 3)
+                .Where(x => x.Completed == false)
+                .Include(x => x.Category)
+                .ToList();
+
+            var Q4 = _context.Responses
+                .Where(x => x.Quadrant == 4)
+                .Where(x => x.Completed == false)
+                .Include(x => x.Category)
+                .ToList();
+
+            var model = new Quadrants
+            {
+                q1 = Q1,
+                q2 = Q2,
+                q3 = Q3,
+                q4 = Q4,
+            };
+
+            return View(model);
         }
         
         
