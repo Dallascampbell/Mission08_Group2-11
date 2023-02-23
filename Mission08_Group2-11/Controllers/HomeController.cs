@@ -39,7 +39,7 @@ namespace Mission08_Group2_11.Controllers
             _context.Add(s);
             _context.SaveChanges();
 
-            return View(s);
+            return RedirectToAction("AddEdit");
         }
 
         [HttpGet]
