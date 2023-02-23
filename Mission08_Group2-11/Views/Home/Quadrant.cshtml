@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Your Tasks";
 }
+
+@model List<SubmitTask>
 <br />
 <h1 class="display-4">Your Tasks</h1>
 <div class="container-fluid text-center">
@@ -25,13 +27,62 @@
         <div class="col-md-5 border">
             <table class="table-borderless">
                 <thead>Quadrant 1</thead>
-           
+                <tr>
+                    <td class="col-1">Task</td>
+                    <td class="col">Due Date</td>
+                    <td class="col">Category</td>
+                    <td class="col">Edit</td>
+                    <td class="col">Delete</td>
+                </tr>
+                <tbody>
+                    @foreach (var x in Model)
+
+                    {
+                        @if (x.Quadrant == 1)
+                        {
+                    <tr>
+                        <td>@x.Task</td>
+                        <td>@x.DueDate</td>
+                        <td>@x.Category.CategoryName</td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-MovieId="@x.TaskID">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-MovieId="@x.TaskID">Delete</a></td>
+                    </tr>
+                        }
+
+                    }
+
+                </tbody>
             </table>
         </div>
         <div class="col-md-5 border">
             <table class="table-borderless">
                 <thead>Quadrant 2</thead>
-          
+                <tr>
+                    <td class="col-1">Task</td>
+                    <td class="col">Due Date</td>
+                    <td class="col">Category</td>
+                    <td class="col">Edit</td>
+                    <td class="col">Delete</td>
+
+                </tr>
+                <tbody>
+                    @foreach (var x in Model)
+
+                    {
+                        @if (x.Quadrant == 2)
+                        {
+                    <tr>
+                        <td>@x.Task</td>
+                        <td>@x.DueDate</td>
+                        <td>@x.Category.CategoryName</td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-TaskID="@x.TaskID">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-TaskID="@x.TaskID">Delete</a></td>
+                    </tr>
+                        }
+
+                    }
+
+                </tbody>
             </table>
         </div>
     </div>
@@ -41,14 +92,63 @@
         </div>
         <div class="col-md-5 border">
             <table class="table-borderless">
-                <thead>Quadrant 3</thead>
-              
+                <thead >Quadrant 3</thead>
+                <tr>
+                    <td class="col-md-1">Task</td>
+                    <td class="col">Due Date</td>
+                    <td class="col">Category</td>
+                    <td class="col">Edit</td>
+                    <td class="col">Delete</td>
+
+                </tr>
+                <tbody>
+                    @foreach (var x in Model)
+
+                    {
+                        @if (x.Quadrant == 3)
+                        {
+                    <tr>
+                        <td>@x.Task</td>
+                        <td>@x.DueDate</td>
+                        <td>@x.Category.CategoryName</td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-TaskID="@x.TaskID">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-TaskID="@x.TaskID">Delete</a></td>
+                    </tr>
+                        }
+
+                    }
+
+                </tbody>
             </table>
         </div>
         <div class="col-md-5 border">
             <table class="table-borderless">
                 <thead>Quadrant 4</thead>
-            
+                <tr>
+                    <td class="col-1">Task</td>
+                    <td class="col">Due Date</td>
+                    <td class="col">Category</td>
+                    <td class="col">Edit</td>
+                    <td class="col">Delete</td>
+                </tr>
+                <tbody>
+                    @foreach (var x in Model)
+
+                    {
+                        @if (x.Quadrant == 4)
+                        {
+                    <tr>
+                        <td>@x.Task</td>
+                        <td>@x.DueDate</td>
+                        <td>@x.Category.CategoryName</td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-TaskID="@x.TaskID">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-TaskID="@x.TaskID">Delete</a></td>
+                    </tr>
+                        }
+
+                    }
+
+                </tbody>
             </table>
         </div>
     </div>

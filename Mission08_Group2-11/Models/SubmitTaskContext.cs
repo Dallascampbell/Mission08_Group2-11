@@ -34,7 +34,7 @@ namespace Mission08_Group2_11.Models
                 {
                     TaskID = 1,
                     Task = "Do the dishes",
-                    DueDate = "2/31/23",
+                    DueDate = "2023-02-28",
                     Quadrant = 2,
                     CategoryID = 1,
                     Completed = false
@@ -44,7 +44,7 @@ namespace Mission08_Group2_11.Models
                 {
                     TaskID = 2,
                     Task = "Take Midterm",
-                    DueDate = "3/01/23",
+                    DueDate = "2023-03-01",
                     Quadrant = 1,
                     CategoryID = 2,
                     Completed = true
@@ -54,7 +54,7 @@ namespace Mission08_Group2_11.Models
                 {
                     TaskID = 3,
                     Task = "Respond to Coworker's email",
-                    DueDate = "3/04/23",
+                    DueDate = "2023-03-04",
                     Quadrant = 3,
                     CategoryID = 3,
                     Completed = false
@@ -64,7 +64,7 @@ namespace Mission08_Group2_11.Models
                 {
                     TaskID = 4,
                     Task = "Get lollipop from Bishop's office",
-                    DueDate = "3/15/23",
+                    DueDate = "2023-03-15",
                     Quadrant = 4,
                     CategoryID = 4,
                     Completed = false
